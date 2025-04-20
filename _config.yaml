@@ -1,3 +1,38 @@
 title: "The Alfredo's Guide to the Code"
 description: "A Journey to the Multidimensional Realm of Pixel Doom"
+
+markdown: kramdown
+highlighter: rouge
+
+# GitHub Pages (as of 2025‑01‑30) runs Jekyll 3.9.5  — compatible settings below
 theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+collections:
+  lessons:
+    output: true
+    permalink: /lessons/:title/
+  projects:
+    output: true
+    permalink: /projects/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: lessons
+    values:
+      layout: lesson
+      nav_section: lessons
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+      nav_section: projects
+
+exclude:
+  - README.md
+  - jekyll-theme.zip

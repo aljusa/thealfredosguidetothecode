@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-4">Latest Lessons</h2>
+  <ul class="grid gap-4 lg:grid-cols-2">
+    {% assign lessons_sorted = site.lessons | sort: 'date' | reverse %}
+    {% for lesson in lessons_sorted limit:6 %}
+      <li class="p-4 rounded-lg shadow hover:shadow-md transition">
+        <h3 class="text-xl font-semibold">
+          <a href="{{ lesson.url | relative_url }}">{{ lesson.title }}</a>
+        </h3>
+        <p class="text-sm mb-2">{{ lesson.excerpt | strip_html | truncatewords: 30 }}</p>
+        <span class="text-xs text-gray-600">{{ lesson.date | date_to_string }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="mt-4"><a class="underline" href="{{ '/lessons/' | relative_url }}">View all lessons →</a></p>
+</section>
+
+<section>
+  <h2 class="text-2xl font-bold mb-4">Featured Projects</h2>
+  <div class="grid gap-4 lg:grid-cols-3">
+    {% assign projects_sorted = site.projects | sort: 'date' | reverse %}
+    {% for project in projects_sorted limit:6 %}
+      <article class="p-4 rounded-lg shadow hover:shadow-md transition">
+        {% if project.thumbnail %}
+          <img class="mb-3 rounded" src="{{ project.thumbnail | relative_url }}" alt="">
+        {% endif %}
+        <h3 class="text-xl font-semibold mb-1">
+          <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+        </h3>
+        <p class="text-sm">{{ project.excerpt | strip_html | truncatewords: 25 }}</p>
+      </article>
+    {% endfor %}
+  </div>
+  <p class="mt-4"><a class="underline" href="{{ '/projects/' | relative_url }}">Browse all projects →</a></p>
+</section>

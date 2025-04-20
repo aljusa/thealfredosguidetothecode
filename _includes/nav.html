@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="container flex items-center justify-between py-4">
+    <h1 class="text-xl font-semibold">
+      <a class="no-underline" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </h1>
+    <nav>
+      {%- assign current = page.nav_section | default: 'home' -%}
+      <a class="nav-link{% if current == 'home' %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      <a class="nav-link{% if current == 'lessons' %} active{% endif %}" href="{{ '/lessons/' | relative_url }}">Lessons</a>
+      <a class="nav-link{% if current == 'projects' %} active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
+    </nav>
+  </div>
+</header>
